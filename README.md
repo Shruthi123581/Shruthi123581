@@ -1,9 +1,9 @@
 - 👋 **Hi, I’m SHRUTHI BHUPATHIRAJU**
 - 👀 I’m interested in Web Development, Software development, Full Stack Development.
-- 🌱 I’m currently learning New Technologies.
+- 🌱 I’m currently learning new things related to coding, technologies and placements.
 - 💞️ I want to get placed in good company with handsome package.
 - 📫 Reach me through:
-     - [Gmail](bh.shruthi224@gmail.com) 
+     - [Gmail](https://bh.shruthi224@gmail.com) 
      - [Phone](+919503388889) 
      - [LinkedIn](https://www.linkedin.com/in/shruthi-bhupathiraju-4a393818b)
      - [Instagram](https://www.instagram.com/shruthi_bhupathiraju/)
