@@ -3,8 +3,8 @@
 - 🌱 I’m currently learning new things related to coding, technologies and placements.
 - 💞️ I want to get placed in good company with handsome package.
 - 📫 Reach me through:
-     - [Gmail](https://bh.shruthi224@gmail.com) 
-     - [Phone](+919503388889) 
+     - Gmail - bh.shruthi224@gmail.com 
+     - Phone - +919503388889 
      - [LinkedIn](https://www.linkedin.com/in/shruthi-bhupathiraju-4a393818b)
      - [Instagram](https://www.instagram.com/shruthi_bhupathiraju/)
      - [Google Developer Profile](https://developers.google.com/profile/u/113245112377096559240)
