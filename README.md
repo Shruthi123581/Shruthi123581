@@ -30,8 +30,7 @@
 
 <br/>
 
-
-<h3> 🤝🏻 &nbsp;Connect with Me </h3>
+🤝🏻 &nbsp;**Connect with Me** 
 - [Gmail](mailto:bh.shruthi224@gmail.com) - bh.shruthi224@gmail.com <br/>
 - Phone - +919503388889 <br/>
 - [LinkedIn](https://www.linkedin.com/in/shruthi-bhupathiraju-4a393818b)<br/>
