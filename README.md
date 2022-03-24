@@ -21,7 +21,7 @@ You can click the Preview link to take a look at your changes.
 
 - 🎓 &nbsp; Studying Computer Science Engineering at N. K. Orchid College of Engineering & Technology, Solapur.
 - 💻 &nbsp; I’m interested in Web Development, Software development, Full Stack Development.
-- 🔭 &nbsp; I’m currently working on a improving my DS & Algorithms. 
+- 🔭 &nbsp; I’m currently working on improving my DS & Algorithms. 
 - 🎯 &nbsp; My goal is to get placed in a good company with handsome package.
 - 🌱 &nbsp; I'm very eager to learn new things related to coding, technologies.
 
