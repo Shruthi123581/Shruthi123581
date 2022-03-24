@@ -32,11 +32,12 @@ You can click the Preview link to take a look at your changes.
   ![Java](https://img.shields.io/badge/-Java-333333?style=flat&logo=Java&logoColor=007396)
   ![C](https://img.shields.io/badge/-C-333333?style=flat&logo=C%2B%2B&logoColor=00599C)
 - 🌐 &nbsp;
-  ![HTML](https://img.shields.io/badge/-HTML-333333?style=flat&logo=HTML5)
+  ![HTML](https://img.shields.io/badge/-HTML-333333?style=flat&logo=HTML)
   ![CSS](https://img.shields.io/badge/-CSS-333333?style=flat&logo=CSS3&logoColor=1572B6)
   ![JavaScript](https://img.shields.io/badge/-JavaScript-333333?style=flat&logo=javascript)
 - 🛢 &nbsp;
   ![MySQL](https://img.shields.io/badge/-MySQL-333333?style=flat&logo=mysql)
+  ![Oracle](https://img.shields.io/badge/-Oracle-333333?style=flat&logo=oracle)
 - ⚙️ &nbsp;
   ![Git](https://img.shields.io/badge/-Git-333333?style=flat&logo=git)
   ![GitHub](https://img.shields.io/badge/-GitHub-333333?style=flat&logo=github)
@@ -48,7 +49,7 @@ You can click the Preview link to take a look at your changes.
 
 
 🤝🏻 &nbsp;Connect with Me
-- [Gmail](mailto:bh.shruthi224@gmail.com)<br/>
+- [Gmail](mailto:bh.shruthi224@gmail.com) - bh.shruthi224@gmail.com <br/>
 - Phone - +919503388889 <br/>
 - [LinkedIn](https://www.linkedin.com/in/shruthi-bhupathiraju-4a393818b)<br/>
 - [Instagram](https://www.instagram.com/shruthi_bhupathiraju/)<br/>
