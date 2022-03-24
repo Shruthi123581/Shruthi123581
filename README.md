@@ -46,19 +46,13 @@ You can click the Preview link to take a look at your changes.
 
 <br/>
 
-<a href="https://github.com/Shruthi123581">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=AVS1508&theme=buefy&show_icons=true" />
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=AVS1508&theme=buefy&layout=compact" />
-</a>
 
-<br/>
+🤝🏻 &nbsp;Connect with Me
+- [Gmail](mailto:bh.shruthi224@gmail.com)<br/>
+- Phone - +919503388889 <br/>
+- [LinkedIn](https://www.linkedin.com/in/shruthi-bhupathiraju-4a393818b)<br/>
+- [Instagram](https://www.instagram.com/shruthi_bhupathiraju/)<br/>
+- [Google Developer Profile](https://developers.google.com/profile/u/113245112377096559240)<br/>
 
-<h3> 🤝🏻 &nbsp;Connect with Me </h3>
-
-<p align="center">
-<a href="mailto:bh.shruthi224@gmail.com"><img alt="Email" src="https://img.shields.io/badge/Email-avsingh@umass.edu-blue?style=flat-square&logo=gmail"></a>
-<a href="https://www.linkedin.com/in/shruthi-bhupathiraju-4a393818b"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-Aditya%20Vikram%20Singh-blue?style=flat-square&logo=linkedin"></a>
-<a href="https://www.instagram.com/shruthi_bhupathiraju/"><img alt="Instagram" src="https://img.shields.io/badge/Instagram-adityavs__-blue?style=flat-square&logo=instagram"></a>
-</p>
 
 ⭐️ From [Shruthi Bhupathiraju](https://github.com/Shruthi123581)
