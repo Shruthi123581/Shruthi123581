@@ -6,7 +6,7 @@
 - 💻 &nbsp; I’m interested in Web Development, Software development, Full Stack Development.
 - 🔭 &nbsp; I’m currently working on improving my DS & Algorithms. 
 - 🎯 &nbsp; My goal is to get placed in a good company with handsome package.
-- 🌱 &nbsp; I'm very eager to learn new things related to coding, technologies.
+- 🌱 &nbsp; I'm very eager to learn new technologies.
 
 <h3> 🛠 &nbsp;Tech Stack</h3>
 
