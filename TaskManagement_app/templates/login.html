@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block content %}
+<html lang="en">
+<head>
+  <style media="screen">
+    body{
+      background-image: url('{% static 'https://www.linkpicture.com/q/background_3.jpeg'%}');
+      background-repeat:no repeat;
+      background-position:top;
+      background-size:1600px 750px;
+      background-attachment:fixed;
+  }
+  
+  
+  .background{
+      width: 430px;
+      height: 520px;
+      position: absolute;
+      transform: translate(-50%,-50%);
+      left: 50%;
+      top: 50%;
+  }
+  .background .shape{
+      height: 200px;
+      width: 200px;
+      position: absolute;
+      border-radius: 50%;
+  }
+  
+  form{
+    height: 450px;
+    width: 440px;
+    background-color: rgba(255,255,255,0.13);
+    position: relative;
+    transform: translate(-50%,-50%);
+    left: 38%;
+    bottom: -230px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+}
+form *{
+    font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+form h3{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+label{
+  display: block;
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: 500;
+}
+input{
+  background-color: rgba(255,255,255,-0.1);
+  height: 40px;
+  border:none;
+  border-bottom: 1px solid white;
+  outline: none;
+  width: 100%;
+  padding: 0 10px;
+  margin-top: 2px;
+  font-size: 14px;
+  font-weight: 300;
+}
+::placeholder{
+  font-size: 1.2em;
+  color: #FFFFFF;
+}
+button{
+  margin-top: 50px;
+  width: 50%;
+  text-align: center;
+  background-color: #FFBF00;
+  color: #FFFFFF;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 16px;
+  cursor: pointer;
+  position: right;
+}
+
+img {
+  border-radius: 4px;
+  padding: 5px;
+  width: 178px;
+  height: auto;
+  float:right;
+  
+}
+
+  </style>
+</head> 
+<body class="hold-transition login-page" style="background-image: url('https://www.linkpicture.com/q/background_3.jpeg');
+      background-repeat:no repeat;
+      background-position:top;
+      background-size:1600px 750px;
+      background-attachment:fixed;">
+
+  <!-- /.login-logo -->
+  <!--div class="card">
+    <div class="card-body login-card-body"-->
+      
+
+      <form action="{% url 'doLogin' %}" method="POST">
+      {% csrf_token %}
+      <div class="login-box">
+      <div class="login-logo">
+      <a href="{% url 'login' %}"><b>Task Manager</b></a>
+      </div>
+      <p class="login-box-msg">Sign in to Task Manager</p>
+        <div class="input-group mb-3">
+          <input type="email" placeholder="Email" name="email">
+          <!--div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div-->
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" placeholder="Password" name="password">
+          <!--div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div-->
+        </div>
+
+          <div class="col-12">
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<button type="submit">Sign In</button>
+          </div>
+          <div class="mt-4">
+            <div class="d-flex justify-content-center links">
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<a href="{% url 'reset_password' %}" class="ml-2" style="color:orange"><b>Forgot Password?</b></a>
+            </div>
+    
+        </div>
+
+          {% comment %} <div class="col-12 text-center">
+            <a href="{% url 'password_reset' %}">Reset Password</a>
+          </div>  {% endcomment %}
+
+          {% comment %} Display Messages {% endcomment %}
+          {% if messages %}
+          <div class="col-12">
+            {% for message in messages %}
+              {% if message.tags == "error" %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                  {{ message }}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          <!-- /.col -->
+        </div>
+      </form>
+
+
+  </div>
+</div>
+<!-- /.login-box -->
+
+
+<!--img src="https://www.linkpicture.com/q/Asset.png" alt="img1" align="left">
+<img src="https://www.linkpicture.com/q/innovaton.png" alt="img"-->
+{% endblock %}
+</html>

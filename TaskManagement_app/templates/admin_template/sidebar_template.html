@@ -1,0 +1,151 @@
+{% load static %}
+<style>
+.main-sidebar,.sidebar {
+  
+  background-image: url('{% static 'dist/img/sidebar.png'%}');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border:none;
+  }
+  img {
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+    height: auto;
+  }
+  .form-input {
+    display: flex;
+    align-items: absolute;
+    height: 36px;
+    width: 90%;
+    position: center;
+  }
+  .form-input input {
+    flex-grow: 1;
+    padding: 0 16px;
+    height: 100%;
+    border: none;
+    background: white;
+    border-radius: 36px 0 0 36px;
+    outline: none;
+    width: 200%;
+    color: black;
+  }
+  .form-input button {
+    width: 150px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0.4;
+    color: #f4f5f0;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 0 36px 36px 0;
+    cursor: pointer;
+  }
+</style>
+
+
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Brand Logo -->
+      <!--a href="{% url 'admin_home' %}" class="brand-link">
+        <img src="{% static 'dist/img/logo.png' %}" alt="Sciqus Logo" class="brand-image  elevation-3"
+            style="opacity: .7">
+        <span class="brand-text font-weight-light">Task Manager</span>
+      </a-->
+
+      <br>&emsp;&emsp;&emsp;&emsp;<img src="https://www.linkpicture.com/q/Asset.png" alt="img1"><br>
+      <form action="#">
+        <div class="form-input">
+          &emsp;&emsp;<input type="search">
+          <button type="submit" class="search-btn"><i class="fa fa-search" style="font-color:white; font-size: 18px;" ></i></button>
+        </div>
+      </form><br>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
+          </div>
+          <div class="info">
+            <a href="{% url 'admin_profile' %}" class="d-block">{{ user.first_name }} {{ user.last_name }}</a>
+          </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+                with font-awesome or any other icon font library -->
+
+            <li class="nav-item">
+              {% url 'admin_home' as admin_home %}
+              <a href="{{ admin_home }}" class="nav-link {% if request.path == admin_home %} active {% endif %}">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Home
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              {% url 'manage_head' as manage_head %}
+              {% url 'edit_head' head_id=id as edit_head %}
+              <a href="{{ manage_head }}" class="nav-link {% if request.path == manage_head %} active {% endif %} {% if request.path == edit_head %} active {% endif %}">
+                <i class="nav-icon fas fa-chalkboard-teacher"></i>
+                <p>
+                  Manage Head
+                </p>
+              </a>
+            </li>
+            
+           
+            
+
+            <li class="nav-item">
+              {% url 'manage_member' as manage_member %}
+              {% url 'edit_member' member_id=id as edit_member %}
+              <a href="{{ manage_member }}" class="nav-link {% if request.path == manage_member %} active {% endif %} {% if request.path == edit_member %} active {% endif %}">
+                <i class="nav-icon fas fa-user-graduate"></i>
+                <p>
+                  Manage Member
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              {% url 'feedback_message' as feedback_message %}
+              <a href="{{ feedback_message }}" class="nav-link {% if request.path == feedback_message %} active {% endif %}">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                   Feedback
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              {% url 'leave_view' as leave_view %}
+              <a href="{{ leave_view }}" class="nav-link {% if request.path == leave_view %} active {% endif %}">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                Leave Report
+                </p>
+              </a>
+            </li>
+
+
+           
+
+            
+
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>

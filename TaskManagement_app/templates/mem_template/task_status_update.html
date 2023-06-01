@@ -1,0 +1,43 @@
+{% extends 'mem_template/base_template.html' %}
+
+{% block page_title %}
+    Task Status
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+
+<section class="content">
+        <div class="container-fluid">
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Update Status</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <div class="card-body">
+                     <form method="post">
+                       {% csrf_token %}
+                        <div class="form-group">
+                         {{ form.as_p }}
+                        </div>
+                       <input type="submit" value="Update Task Status">
+                      </form>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+</div><!-- /.container-fluid -->
+</section>
+
+{% endblock main_content %}
+
+{% block custom_js %}
+
+{% endblock custom_js %}

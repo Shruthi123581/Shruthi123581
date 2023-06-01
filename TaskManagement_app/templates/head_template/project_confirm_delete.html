@@ -1,0 +1,24 @@
+{% comment %}{% extends 'main.html' %} {% include 'sidebar.html' %}{% endcomment %}
+{% extends 'head_template/base_template.html' %}
+{% block page_title %}
+    Add Project
+{% endblock page_title %}
+
+{% block main_content %}
+{% load static %}
+
+
+
+
+<div class="main-container">
+<a class="go-back-link" href="{% url 'projects' %}"><i class="ph-arrow-circle-left-fill"></i></a>
+<p class="unfinished-projects-delete">Are you sure you want to delete <strong>"{{project}}"</strong></p>
+
+<form class="form" method="POST">
+	{% csrf_token %}
+	
+
+	<input class="button" value="Delete" type="submit" />
+</form>
+
+{% endblock main_content %}

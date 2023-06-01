@@ -1,0 +1,150 @@
+{% extends 'head_template/base_template.html' %}
+{% block page_title %}
+     Project List
+{% endblock page_title %}
+
+{% block main_content %}
+{% load static %}
+
+
+<div class="main-container">
+
+<div class="single-project-nav">
+<a class="go-back-link" href="{% url 'projects' %}"><i class="ph-arrow-circle-left-fill"></i></a>
+<a class="go-back-link" href="{% url 'project-update' project.id %}"><i class="ph-pencil"></i></a>
+<a class="go-back-link" href="{% url 'project-delete' project.id %}"><i class="ph-trash"></i></a>
+<a class="create-btn--single" href="{% url 'task-create' %}">Add Task</a>
+
+</div>
+
+<div class="single-project-head-info">
+	
+	{% if project.project_status == "1" %}
+	<div class="project_status"><p class="project_status_text--pending">{{project.get_project_status_display}}</p>
+	</div>
+	
+	{% elif project.project_status == "2" %}
+	<div class="project_status"><p class="project_status_text--active">{{project.get_project_status_display}}</p>
+	</div>
+
+	{% elif project.project_status == "3" %}
+	<div class="project_status"><p class="project_status_text--waiting">{{project.get_project_status_display}}</p>
+	</div>
+
+	{% elif project.project_status == "4" %}
+	<div class="project_status"><p class="project_status_text--finished">{{project.get_project_status_display}}</p>
+	</div>
+
+	{% endif %}
+
+	{% if not project.project_complete %}
+	
+	{% if project.is_due_date %}
+	<div class="due-date">
+		Due date:{{project.project_due_date|date:'d-m-Y'}}
+	</div>
+	{% else %}
+	<div class="due-date-passed">
+		Due date: {{project.project_due_date|date:'d-m-Y'}}
+	</div>
+	{% endif %}
+	
+	{% else %}
+	<div class="due-date">
+		&#10003 Project completed
+	</div>
+	{% endif %}
+
+	
+	</div>
+<h1 class="heading-primary">{{project.project_title}}</h1>
+
+<p class="project-about">About</p>
+<p class="project-intro-on">{{project.project_intro}}</p>
+
+<p class="project-description">Description</p>
+<p class="project-description-on">{{project.project_description}}</p>
+
+<p class="project-description">Members</p>
+{% for member in project.members.all %}
+    <p class="project-description-on">{{ member.admin.first_name}}</p>
+{% endfor %}
+
+
+
+<div class="project-task-section">
+<p class="project-current-task">Current tasks:</p>
+
+{% for task in project.task_set.all %}
+
+{% if task.task_complete %}
+
+<div class="project-card--task--complete">
+	<div class="project-heading--task">
+		<h3 class="heading-secondary--task">{{task.task_title}}</h2>
+		<p class="project-intro--task">{{task.task_description}}</p>
+	</div>
+
+	<div class="project-links-task">
+		<!-- <a class="project-card-link" href="{% url 'task-update' task.id %}">Done</a> -->
+		{% if task.task_important %}
+		<div class="important-tag">
+		Important
+		</div>
+		{% endif %}
+
+		
+		<div class="due-date">
+		&#10003 Task completed
+		</div>
+
+		<a class="project-card-link" href="{% url 'task-update' task.id %}">Edit</a>
+	</div>
+</div>
+
+{% else %}
+
+<div class="project-card--task">
+	<div class="project-heading--task">
+		<h3 class="heading-secondary--task">{{task.task_title}}</h2>
+		<p class="project-intro--task">{{task.task_description}}</p>
+	</div>
+
+	<div class="project-links-task">
+		<!-- <a class="project-card-link" href="{% url 'task-update' task.id %}">Done</a> -->
+		{% if task.task_important %}
+		<div class="important-tag">
+		Important
+		</div>
+		{% endif %}
+
+		{% if task.is_task_due_date %}
+		<div class="due-date">
+		Due date: {{task.task_due_date|date:'d-m-Y'}}
+		</div>
+		{% else %}
+		<div class="due-date-passed">
+		Due date: {{task.task_due_date|date:'d-m-Y'}}
+		</div>
+		{% endif %}
+
+		<a class="project-card-link" href="{% url 'task-update' task.id %}">Edit</a>
+	</div>
+</div>
+
+{% endif %}
+
+{% empty %}
+	<div class="project-card">
+		<div class="no-items-area">
+			<h2 class="no-items">No tasks in this project</h2>
+		</div>
+	</div>
+
+
+{% endfor %}
+
+</div>
+</div>
+
+{% endblock main_content %}

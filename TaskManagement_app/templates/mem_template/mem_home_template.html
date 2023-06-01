@@ -1,0 +1,41 @@
+{% extends 'mem_template/base_template.html' %}
+
+{% block page_title %}
+    Member Home
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+
+<section class="content">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="w3-card-4" style="width:30%">
+                  <header class="w3-container w3-light-grey">
+                    <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+                  </header>
+                  <br>
+                  <div class="w3-container">
+                    <div class="image">
+                    <img src="{% static 'dist/img/user2-160x160.jpg' %}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                    </div>
+                    <p>{{ user.username }}</p><br>
+                  </div>
+                  <br>
+                 
+                  <a href="{% url 'member_profile' %}"><button class="w3-button w3-block bg-primary text-white">Update</button></a>
+                </div>
+              </div>
+              <br>
+
+            {% comment %} Boxes Section Starts {% endcomment %}
+            
+
+        </div><!-- /.container-fluid -->
+      </section>
+
+  {% endblock main_content %}
+
+  

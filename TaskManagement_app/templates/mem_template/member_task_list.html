@@ -1,0 +1,64 @@
+{% extends 'mem_template/base_template.html' %}
+
+{% block page_title %}
+    Task
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+
+<section class="content">
+        <div class="container-fluid" style="margin-left: 200px;">
+            <div style="display: flex; gap: 30px;">
+                <div style="border: 2px dashed red; padding: 10px;">
+                    <h3>All Tasks</h3>
+                    {% for task in all_tasks %}
+                      <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ task.task_title }}</h5>
+                          <p class="card-text">{{ task.task_description }}</p>
+                          <p class="card-text">Due Date: {{ task.task_due_date }}</p>
+                        </div>
+                      </div>
+                    {% empty %}
+                      <p>No tasks.</p>
+                    {% endfor %}
+                </div>
+              
+                <div style="border: 2px dashed green; padding: 10px;">
+                    <h3>Completed Tasks</h3>
+                    {% for task in completed_tasks %}
+                      <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ task.task_title }}</h5>
+                          <p class="card-text">{{ task.task_description }}</p>
+                          <p class="card-text">Due Date: {{ task.task_due_date }}</p>
+                        </div>
+                      </div>
+                    {% empty %}
+                      <p>No completed tasks.</p>
+                    {% endfor %}
+                </div>
+              
+                <div style="border: 2px dashed orange; padding: 10px;">
+                    <h3>In Progress Tasks</h3>
+                    {% for task in in_progress_tasks %}
+                      <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ task.task_title }}</h5>
+                          <p class="card-text">{{ task.task_description }}</p>
+                          <p class="card-text">Due Date: {{ task.task_due_date }}</p>
+                        </div>
+                      </div>
+                    {% empty %}
+                      <p>No tasks in progress.</p>
+                    {% endfor %}
+                </div>
+              </div>
+              
+
+</div><!-- /.container-fluid -->
+</section>
+
+{% endblock main_content %}

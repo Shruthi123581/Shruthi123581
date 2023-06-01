@@ -1,0 +1,203 @@
+{% load static %}
+<style>
+  .main-sidebar,.sidebar {
+    
+    background-image: url('{% static 'dist/img/sidebar.png'%}');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border:none;
+    }
+    img {
+      border-radius: 4px;
+      padding: 5px;
+      width: 150px;
+      height: auto;
+    }
+    .form-input {
+      display: flex;
+      align-items: absolute;
+      height: 36px;
+      width: 90%;
+      position: center;
+    }
+    .form-input input {
+      flex-grow: 1;
+      padding: 0 16px;
+      height: 100%;
+      border: none;
+      background: white;
+      border-radius: 36px 0 0 36px;
+      outline: none;
+      width: 200%;
+      color: black;
+    }
+    .form-input button {
+      width: 150px;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.5);
+      opacity: 0.4;
+      color: #f4f5f0;
+      font-size: 18px;
+      border: none;
+      outline: none;
+      border-radius: 0 36px 36px 0;
+      cursor: pointer;
+    }
+  </style>
+  
+  
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <!--a href="{% url 'member_home' %}" class="brand-link">
+          <img src="{% static 'dist/img/logo.png' %}" alt="Sciqus Logo" class="brand-image  elevation-3"
+              style="opacity: .7">
+          <span class="brand-text font-weight-light">Task Manager</span>
+        </a-->
+
+        <br>&emsp;&emsp;&emsp;&emsp;<img src="https://www.linkpicture.com/q/Asset.png" alt="img1"><br>
+      <form action="#">
+        <div class="form-input">
+          &emsp;&emsp;<input type="search">
+          <button type="submit" class="search-btn"><i class="fa fa-search" style="font-color:white; font-size: 18px;" ></i></button>
+        </div>
+      </form><br>
+  
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
+          </div>
+          <div class="info">
+            <a href="{% url 'member_profile' %}" class="d-block">{{ user.first_name }} {{ user.last_name }}</a>
+          </div>
+        </div>
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item">
+              {% url 'member_home' as member_home %}
+              <a href="{{ member_home }}" class="nav-link {% if request.path == member_home %} active {% endif %}">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Home
+                  {% comment %} <span class="right badge badge-danger">New</span> {% endcomment %}
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              {% url 'member_view_task' as member_view_task %}
+              <a href="{{ member_view_task }}" class="nav-link {% if request.path == member_view_task %} active {% endif %}">
+                <i class="nav-icon fas fa-tasks"></i>
+                <p>
+                  View Task
+                  
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              {% url 'member_task_list' as member_task_list %}
+              <a href="{{ member_task_list }}" class="nav-link {% if request.path == member_task_list %} active {% endif %}">
+                <i class="nav-icon fas fa-tasks"></i>
+                <p>
+                 Task List
+                  
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              {% url 'member_projects' as member_projects %}
+              <a href="{{ member_projects }}" class="nav-link {% if request.path == member_projects %} active {% endif %}">
+                <i class="nav-icon fas fa-tasks"></i>
+                <p>
+                Project List
+                  
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              {% url 'apply_leave' as apply_leave %}
+              <a href="{{ apply_leave }}" class="nav-link {% if request.path == apply_leave %} active {% endif %}">
+                <i class="nav-icon fas fa-envelope-open-text"></i>
+                <p>
+                  Apply Leave
+                  
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              {% url 'feedback' as feedback %}
+              <a href="{{ feedback }}" class="nav-link {% if request.path == feedback %} active {% endif %}">
+                <i class="nav-icon fas fa-comments"></i>
+                <p>
+                  Feedback
+                 
+                </p>
+              </a>
+            </li>
+            
+            
+            
+            <!-- Add icons to the links using the .nav-icon class
+                with font-awesome or any other icon font library -->
+            
+            <!--lli class="nav-item">
+              {% url 'mem_home' as member_home %}
+              <a href="{{ mem_home }}" class="nav-link {% if request.path == mem_home %} active {% endif %}">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Home
+                  {% comment %} <span class="right badge badge-danger">New</span> {% endcomment %}
+                </p>
+              </a>
+            </li>
+
+            <i class="nav-item">
+              {% url 'student_view_attendance' as student_view_attendance %}
+              <a href="{{ student_view_attendance }}" class="nav-link {% if request.path == student_view_attendance %} active {% endif %}">
+                <i class="nav-icon fas fa-calendar-alt"></i>
+                <p>
+                  View Attendance
+                  {% comment %} <span class="right badge badge-danger">New</span> {% endcomment %}
+                </p>
+              </a>
+            </li>
+
+            
+
+            <li class="nav-item">
+              {% url 'student_apply_leave' as student_apply_leave %}
+              <a href="{{ student_apply_leave }}" class="nav-link {% if request.path == student_apply_leave %} active {% endif %}">
+                <i class="nav-icon fas fa-envelope-open-text"></i>
+                <p>
+                  Apply for Leave
+                  {% comment %} <span class="right badge badge-danger">New</span> {% endcomment %}
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              {% url 'student_feedback' as student_feedback %}
+              <a href="{{ student_feedback }}" class="nav-link {% if request.path == student_feedback %} active {% endif %}">
+                <i class="nav-icon fas fa-comments"></i>
+                <p>
+                  Send Feedback
+                  {% comment %} <span class="right badge badge-danger">New</span> {% endcomment %}
+                </p>
+              </a>
+            </li-->
+
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>

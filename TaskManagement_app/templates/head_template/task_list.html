@@ -1,0 +1,91 @@
+{% extends 'head_template/base_template.html' %}
+{% block page_title %}
+     Task List
+{% endblock page_title %}
+
+{% block main_content %}
+{% load static %}
+
+<!--div class="project-list"-->
+<div class="projects-list-main1">
+ <a class="go-back-link" href="{% url 'projects' %}"><i class="ph-arrow-circle-left-fill"></i></a>
+<h1 class="heading-primary">Tasks</h1>
+
+<div class="create-area">
+<a class="create-btn" href="{% url 'task-create' %}">Add Task</a>
+</div>
+</div>
+
+{% for task in tasks %}
+
+{% if task.task_complete %}
+
+<div class="project-card--task--complete">
+	<div class="project-heading--task">
+		<h3 class="heading-secondary--task">{{task.task_title}}</h3>
+		<p class="project-intro--task">{{task.task_description}}</p>
+	</div>
+
+	<div class="project-links-task">
+		<!-- <a class="project-card-link" href="{% url 'task-update' task.id %}">Done</a> -->
+		{% if task.task_important %}
+		<div class="important-tag">
+		Important
+		</div>
+		{% endif %}
+
+		
+		<div class="due-date">
+		&#10003 Task completed
+		</div>
+		
+		
+		<a class="project-card-link" href="{% url 'task-update' task.id %}">Edit</a>
+	</div>
+</div>
+
+{% else %}
+
+<div class="project-card--task">
+	<div class="project-heading--task">
+		<h3 class="heading-secondary--task">{{task.task_title}}</h3>
+		<p class="project-intro--task">{{task.task_description}}</p>
+	</div>
+
+	<div class="project-links-task">
+		<!-- <a class="project-card-link" href="{% url 'task-update' task.id %}">Done</a> -->
+		{% if task.task_important %}
+		<div class="important-tag">
+		Important
+		</div>
+		{% endif %}
+
+		{% if task.is_task_due_date %}
+		<div class="due-date">
+		Due date: {{task.task_due_date|date:'d-m-Y'}}
+		</div>
+		{% else %}
+		<div class="due-date-passed">
+		Due date: {{task.task_due_date|date:'d-m-Y'}}
+		</div>
+		{% endif %}
+
+		<a class="project-card-link" href="{% url 'task-update' task.id %}">Edit</a>
+
+	</div>
+</div>
+
+{% endif %}
+
+{% empty %}
+
+	<div class="project-card">
+		<div class="no-items-area">
+			<p class="no-items">No tasks on the list</p>
+		</div>
+	</div>
+<!--/div-->
+
+{% endfor %}
+
+{% endblock main_content %}

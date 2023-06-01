@@ -1,0 +1,124 @@
+
+
+{% block page_title %}
+    Update Profile
+{% endblock page_title %}
+
+{% block main_content %}
+<style>
+    
+* {
+    font-family: sans-serif;
+    padding: 0px;
+    margin: 0px;
+  }
+  
+  body {
+    background-color: #212121;
+  }
+  
+  .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ECEFF1;
+    width: 500px;
+    height: 250px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .menu-icon {
+    position: absolute;
+    right: 0;
+    width: 53px;
+    height: 53px;
+    filter: invert(40%) sepia(57%) saturate(2228%) hue-rotate(189deg) brightness(96%) contrast(87%);
+  }
+  
+  .svg-background {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #1E88E5;
+    -webkit-clip-path: polygon(0 0, 14% 0, 48% 100%, 0% 100%);
+    clip-path: polygon(0 0, 14% 0, 48% 100%, 0% 100%);
+  }
+  
+  .svg-background2 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 20px;
+    background-color: rgba(0,0,0,0.12);
+    z-index: -9;
+    -webkit-clip-path: polygon(0 0, 14% 0, 48% 100%, 0% 100%);
+    clip-path: polygon(0 0, 14% 0, 48% 100%, 0% 100%);
+  }
+  
+  .profile-img {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    margin-top: 55px;
+    margin-left: 40px;
+    border-radius: 50%;
+  }
+  
+  .circle {
+    position: absolute;
+    width: 162px;
+    height: 161px;
+    left: 0;
+    top: 0;
+    background-color: #ECEFF1;
+    border-radius: 50%;
+    margin-top: 50.5px;
+    margin-left: 35px;
+  }
+  
+  .text-container {
+    position: absolute;
+    right: 0;
+    margin-right: 40px;
+    margin-top: 45px;
+    max-width: 230px;
+    text-align: center;
+  }
+  
+  .title-text {
+    color: #263238;
+    font-size: 28px;
+    font-weight: 600;
+    margin-top: 5px;
+  }
+  
+  .info-text {
+    margin-top: 10px;
+    font-siize: 18px;
+  }
+  
+  .desc-text {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+</style>
+<html>
+<div class="container">
+    <div class="svg-background"></div>
+    <div class="svg-background2"></div>
+    <div class="circle"></div>
+    <img class="menu-icon" src="https://pngimage.net/wp-content/uploads/2018/06/white-menu-icon-png-8.png">
+    <img class="profile-img" src="">
+    <div class="text-container">
+      <p class="title-text">Austin May</p>
+      <p class="info-text">Software Developer</p>
+      <p class="desc-text">Hello, I am Austin May and I enjoy front-end web development. I fell in love with software development at Marshall University, where I graduated with a Bachelor's in Computer Science. </p>
+    </div>
+  </div>
+  </html>
+  {% endblock main_content %}

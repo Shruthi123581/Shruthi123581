@@ -1,0 +1,58 @@
+{% extends 'head_template/base_template.html' %}
+{% block page_title %}
+     Project List
+{% endblock page_title %}
+
+{% block main_content %}
+{% load static %}
+
+<section class="content">
+	<div class="container-fluid">
+		
+
+		
+<!--div class="main-container"-->
+    <a class="go-back-link" href="{% url 'tasks' %}"><i class="ph-arrow-circle-left-fill"></i></a>
+    
+
+
+    <form class="form" method="POST" action="" enctype="multipart/form-data">
+	{% csrf_token %}
+	
+	<label class="form-field">Title</label>
+	{{ form.task_title }}
+	
+	<label class="form-field">Assign to project</label>
+	{{ form.task_belongs }}
+	
+	<label class="form-field">Description</label>
+	{{ form.task_description }}
+	
+	<label class="form-field">Document</label>
+	{{ form.document }}
+	
+	<label class="form-field">Status</label>
+	{{ form.task_status }}
+	
+	<label class="form-field">Member</label>
+	{{ form.assigned_member }}
+	
+	<label class="form-field">Due Date</label>
+	{{ form.task_due_date }}
+	
+	<label class="form-field">Important</label>
+	{{ form.task_important }}
+	
+	
+	
+	<input class="button" type="submit" value="Submit" />
+	
+	
+</form>
+</div>
+</div>
+
+</div>
+</section>
+
+{% endblock main_content %}

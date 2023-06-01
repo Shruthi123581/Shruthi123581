@@ -1,0 +1,181 @@
+{% extends 'head_template/base_template.html' %}
+{% block page_title %}
+     Project List
+{% endblock page_title %}
+
+{% block main_content %}
+{% load static %}
+
+
+{% if request.user.is_authenticated %}
+<section class="content">
+    <div class="container-fluid">
+        
+		
+
+            <!--div class="project-list"-->
+                 <!--h1 class="heading-primary">Welcome to ProManageApp, {{request.user}}</h1-->
+
+                <div class="projects-list-main">
+                  <div class="create-area">
+                  <a class="create-btn" href="{% url 'project-create' %}">Create project</a>
+                  <a class="create-btn" href="{% url 'task-create' %}">Add Task</a>
+                </div>
+
+                <div class="search-bar">
+                  <form method="GET">
+	               <input class="search-text" type="text" name="search-area" value="{{search_input}}" placeholder="Project name..." />
+	               <input class="action-btn" type="submit" value="Search" />
+                  </form>
+                </div>
+            </div>
+
+{% endif %}
+
+            <div class="projects-grid">
+
+            {% for project in projects %}
+
+            {% if project.project_complete %}
+
+               <div class="project-card--complete">
+	               <div class="head-info">
+	               {% if project.project_status == "1" %}
+	               <div class="project_status"><p class="project_status_text--pending">{{project.get_project_status_display}}</p>
+	               </div>
+	
+	               {% elif project.project_status == "2" %}
+	               <div class="project_status"><p class="project_status_text--active">{{project.get_project_status_display}}</p>
+	               </div>
+
+	                {% elif project.project_status == "3" %}
+	               <div class="project_status"><p class="project_status_text--waiting">{{project.get_project_status_display}}</p>
+	               </div>
+
+	                {% elif project.project_status == "4" %}
+	               <div class="project_status"><p class="project_status_text--finished">{{project.get_project_status_display}}</p>
+	               </div>
+	                {% endif %}
+
+	
+	                <div class="due-date">
+		              &#10003 Project completed
+	                </div>
+
+
+                </div>
+
+	            <div class="project-heading">
+		            <h2 class="heading-secondary">{{project.project_title}}</h2>
+	            </div>
+		
+	            <div class="project-created">
+		           <p class="project-date">Last task:</p>
+		              {% for task in project.task_set.all|slice:"0:1" %}
+		              {% if not task.task_complete %}
+		             <p class="project-date-text">{{task.task_title}}</p>
+		              {% endif %}
+		              {% empty %}
+		              <p class="project-date-text">No tasks in this project</p>
+		              {% endfor %}
+	            </div>
+
+	            <div class="project-subtitle">
+		        <p class="project-intro-card">About project:</p>
+		        <p class="project-intro">{{project.project_intro|truncatewords:6}}</p>
+	            </div>
+
+	            <div class="project-links">
+		           <a class="project-card-link" href="{% url 'project' project.id %}">View</a>
+		           <a class="project-card-link" href="{% url 'task-create' %}">Add Task</a>
+		           <a class="project-card-link" href="{% url 'project-update' project.id %}">Edit</a>
+		           <a class="project-card-link" href="{% url 'project-delete' project.id %}">Delete</a>
+	            </div>
+            </div>	
+
+            {% else %}
+
+            <div class="project-card">
+	           <div class="head-info">
+	                {% if project.project_status == "1" %}
+	                   <div class="project_status"><p class="project_status_text--pending">{{project.get_project_status_display}}</p>
+	                   </div>
+
+	                {% elif project.project_status == "2" %}
+	                    <div class="project_status"><p class="project_status_text--active">{{project.get_project_status_display}}</p>
+	                    </div>
+
+	                {% elif project.project_status == "3" %}
+	                    <div class="project_status"><p class="project_status_text--waiting">{{project.get_project_status_display}}</p>
+	                    </div>
+
+	                {% elif project.project_status == "4" %}
+	                    <div class="project_status"><p class="project_status_text--finished">{{project.get_project_status_display}}</p>
+	                    </div>
+
+	                {% endif %}
+
+	                {% if project.is_due_date %}
+	                <div class="due-date">
+		                Due date: {{project.project_due_date|date:'d-m-Y'}}
+	                </div>
+	                {% else %}
+	                <div class="due-date-passed">
+		                Due date: {{project.project_due_date|date:'d-m-Y'}}
+	                </div>
+	               {% endif %}
+
+                </div>
+
+	           <div class="project-heading">
+		           <h2 class="heading-secondary">{{project.project_title}}</h2>
+	            </div>
+	
+	            <div class="project-created">
+		           <p class="project-date">Last task:</p>
+		           {% for task in project.task_set.all|slice:"0:1" %}
+		           {% if not task.task_complete %}
+		           <div class="last-task-field">
+		               <div class="last-task-text-field">
+		                  <p class="project-date-text">{{task.task_title}}</p>
+		                </div>
+		                <div class="last-task-icon">
+		                  <a href="{% url 'task-update' task.id %}"><i class="ph-dots-three-circle-fill"></i></a>
+		                </div>
+		            </div>
+		            {% endif %}
+		            {% empty %}
+		            <p class="project-date-text">No tasks in this project</p>
+		            {% endfor %}
+	            </div>
+
+	            <div class="project-subtitle">
+		           <p class="project-intro-card">About project:</p>
+		           <p class="project-intro">{{project.project_intro|truncatewords:6}}</p>
+	            </div>
+
+	            <div class="project-links">
+		           <a class="project-card-link" href="{% url 'project' project.id %}">View</a>
+		           <a class="project-card-link" href="{% url 'task-create' %}">Add Task</a>
+		           <a class="project-card-link" href="{% url 'project-update' project.id %}">Edit</a>
+		           <a class="project-card-link" href="{% url 'project-delete' project.id %}">Delete</a>
+	            </div>
+            </div>
+
+            {% endif %}
+
+            {% empty %}
+	        <div class="project-card">
+		        <div class="no-items-area">
+			       <p class="no-items">No current projects</p>
+		        </div>
+	        </div>
+
+            {% endfor %}
+
+            
+
+    </div><!-- /.container-fluid -->
+</section>
+
+{% endblock main_content %}
