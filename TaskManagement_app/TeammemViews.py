@@ -13,10 +13,21 @@ import os
 from django.http import JsonResponse
 
 def member_home(request):
-   
-    context={
-        "member" :'hi'
+    team_member = TeamMem.objects.get(admin=request.user)
+    tasks = Task.objects.filter(assigned_member=team_member)
+    
+    # Separate tasks based on their status
+    all_tasks = tasks
+    completed_tasks = tasks.filter(task_status='3')
+    in_progress_tasks = tasks.filter(task_status='2')
+    
+    context = {
+        'all_tasks':all_tasks,
+        'completed_tasks': completed_tasks,
+        'in_progress_tasks': in_progress_tasks
     }
+
+
     return render(request, "mem_template/mem_home_template.html",context)
 
 
@@ -133,34 +144,28 @@ def generate_progress_report(task):
 
 
 def member_projects(request):
-    current_member = request.user.teammem  # Assuming the logged-in member is associated with a TeamMem instance
+    current_member = request.user.teammem
     member_projects = Project.objects.filter(members=current_member)
-    
+
     context = {
         'member_projects': member_projects,
         'current_member': current_member,
     }
-    
-    return render(request, 'mem_template/project_list.html', context)
 
+    return render(request, 'mem_template/project_list.html', context)
 
 
 
 def get_tasks(request):
     project_id = request.GET.get('project_id')
-    tasks = []
+    project = Project.objects.get(id=project_id)
+    members = project.members.all()
 
-    # Query the tasks for the specified project
-    try:
-        project = Project.objects.get(id=project_id)
-        tasks = project.tasks.all()
-    except Project.DoesNotExist:
-        pass
-
-    # Convert the tasks to a JSON serializable format
-    serialized_tasks = [{'task_title': task.task_title, 'member': task.member} for task in tasks]
-
-    return JsonResponse(serialized_tasks, safe=False)
+    context = {
+        'project': project,
+        'members': members,
+    }
+    return render(request, 'mem_template/project_detail.html', context)
 
 
 
@@ -169,7 +174,7 @@ def profile(request):
     
     return render(request, "mem_template/profile.html")
 
-def apply_leave(request):
+def apply_leave1(request):
     emp = CustomUser.objects.get(id=request.user.id)
     leave_data = LeaveReport.objects.filter(emp_id=emp)
     context = {
@@ -178,10 +183,10 @@ def apply_leave(request):
     return render(request, "mem_template/apply_leave_template.html", context)
 
 
-def apply_leave_save(request):
+def apply_leave_save1(request):
     if request.method != "POST":
         messages.error(request, "Invalid Method")
-        return redirect('apply_leave')
+        return redirect('apply_leave1')
     else:
         leave_date = request.POST.get('leave_date')
         leave_message = request.POST.get('leave_message')
@@ -191,13 +196,13 @@ def apply_leave_save(request):
             leave_report = LeaveReport(emp_id=emp_obj, leave_date=leave_date, leave_message=leave_message, leave_status=0)
             leave_report.save()
             messages.success(request, "Applied for Leave.")
-            return redirect('apply_leave')
+            return redirect('apply_leave1')
         except:
             messages.error(request, "Failed to Apply Leave")
-            return redirect('apply_leave')
+            return redirect('apply_leave1')
 
 
-def feedback(request):
+def feedback1(request):
     emp_obj = CustomUser.objects.get(id=request.user.id)
     feedback_data = FeedBack.objects.filter(emp_id=emp_obj)
     context = {
@@ -206,10 +211,10 @@ def feedback(request):
     return render(request, "mem_template/feedback_template.html", context)
 
 
-def feedback_save(request):
+def feedback_save1(request):
     if request.method != "POST":
         messages.error(request, "Invalid Method.")
-        return redirect('feedback')
+        return redirect('feedback1')
     else:
         feedback = request.POST.get('feedback_message')
         emp_obj = CustomUser.objects.get(id=request.user.id)
@@ -218,10 +223,10 @@ def feedback_save(request):
             add_feedback = FeedBack(emp_id=emp_obj, feedback=feedback, feedback_reply="")
             add_feedback.save()
             messages.success(request, "Feedback Sent.")
-            return redirect('feedback')
+            return redirect('feedback1')
         except:
             messages.error(request, "Failed to Send Feedback.")
-            return redirect('feedback')
+            return redirect('feedback1')
 
 
 

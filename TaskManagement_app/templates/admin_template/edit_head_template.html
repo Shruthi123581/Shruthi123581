@@ -7,14 +7,21 @@
 {% block main_content %}
 
 {% load static %}
-
+<style>
+    .button {
+        background-color: #23395d; 
+        color: #ffffff; 
+      }.button:hover {
+        color: #ffffff; 
+}
+</style>
 <section class="content">
         <div class="container-fluid">
 
             <div class="row">
                 <div class="col-md-12">
                     <!-- general form elements -->
-                    <div class="card card-primary">
+                    <div class="card ">
                     <div class="card-header">
                         <h3 class="card-title">Edit Head</h3>
                     </div>
@@ -52,6 +59,16 @@
 
                         <div class="card-body">
                             <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" class="form-control" name="first_name" value="{{ head.admin.first_name }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" class="form-control" name="last_name" value="{{ head.admin.last_name }}">
+                                <input type="hidden" name="head_id" value="{{ head.admin.id }}" />
+                            </div>
+                            <div class="form-group">
                                 <label>Email address</label>
                                 <input type="email" class="form-control" name="email" value="{{ head.admin.email }}">
                             </div>
@@ -65,28 +82,42 @@
                                 <label>Password</label>
                                 <input type="password" class="form-control" name="password" value="{{ staff.admin.password }}">
                             </div> {% endcomment %}
-
                             <div class="form-group">
-                                <label>First Name</label>
-                                <input type="text" class="form-control" name="first_name" value="{{ head.admin.first_name }}">
+                                <label>Address</label>
+                                <input type="text" class="form-control" name="address" value="{{ head.address }}">
+                            </div>
+        
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" class="form-control" name="phone" value="{{ head.phone }}">
+                            </div>
+        
+                            <div class="form-group">
+                                <label>Profile Picture</label>
+                                <input type="file" class="form-control-file" name="profile_pic" >
+                            </div>
+        
+                            <div class="form-group">
+                                <label>Date of Birth</label>
+                                <input type="date" class="form-control" name="dob" value="{{ head.dob }}">
                             </div>
 
                             <div class="form-group">
-                                <label>Last Name</label>
-                                <input type="text" class="form-control" name="last_name" value="{{ head.admin.last_name }}">
-                                <input type="hidden" name="head_id" value="{{ head.admin.id }}" />
-                            </div>
-
-                            
-
-                            
+                                <label>Gender</label>
+                                <select class="form-control" name="gender">
+                                    <option value="">Select Gender</option>
+                                    <option value="M" {% if head.gender == 'M' %}selected{% endif %}>Male</option>
+                                    <option value="F" {% if head.gender == 'F' %}selected{% endif %}>Female</option>
+                                </select>
+                            </div>                                                    
+ 
 
 
                         </div>
                         <!-- /.card-body -->
 
                         <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Update Head</button>
+                        <button type="submit" class="btn button">Update Head</button>
                         </div>
                     </form>
                     </div>

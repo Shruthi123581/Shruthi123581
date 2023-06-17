@@ -7,7 +7,14 @@
 {% block main_content %}
 
 {% load static %}
-
+<style>
+    .button {
+        background-color: #23395d; 
+        color: #ffffff; 
+      }.button:hover {
+        color: #ffffff; 
+}
+    </style>
 <section class="content">
         <div class="container-fluid">
 
@@ -15,7 +22,7 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card card-primary">
+                    <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Task</h3>
                         </div>
@@ -31,7 +38,7 @@
                                         <th>Status</th>
                                         <th>Task Member</th>
                                         <th>Due Date</th>
-                                        <th>Update Status</th>
+                                        <th>Status</th>
                                     </tr>
                                     </thead>
                                     
@@ -46,7 +53,7 @@
                                         <td>
                                             <form action="{% url 'update_task_status' task.id %}" method="POST">
                                                 {% csrf_token %}
-                                                <button type="submit" class="btn btn-primary">Update Status</button>
+                                                <button type="submit" class="btn button"><i class="fas fa-pencil-alt"></i></button>
                                             </form>
                                         </td>
                                        

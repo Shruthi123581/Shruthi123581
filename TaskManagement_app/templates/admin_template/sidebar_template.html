@@ -13,13 +13,14 @@
     padding: 5px;
     width: 150px;
     height: auto;
+    opacity:2.0;
   }
   .form-input {
     display: flex;
     align-items: absolute;
     height: 36px;
     width: 90%;
-    position: center;
+    /*position: center;*/
   }
   .form-input input {
     flex-grow: 1;
@@ -46,6 +47,9 @@
     outline: none;
     border-radius: 0 36px 36px 0;
     cursor: pointer;
+  }
+  .nav-link1 {
+    background-color: yellow;
   }
 </style>
 
@@ -84,7 +88,7 @@
             <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
 
-            <li class="nav-item">
+            <li class="nav-item ">
               {% url 'admin_home' as admin_home %}
               <a href="{{ admin_home }}" class="nav-link {% if request.path == admin_home %} active {% endif %}">
                 <i class="nav-icon fas fa-tachometer-alt"></i>

@@ -7,7 +7,7 @@ from .TeamheadViews import ProjectList, ProjectDetail, ProjectCreate, ProjectUpd
 
 urlpatterns = [
      
-
+    
     path('', views.loginPage, name="login"),
     # path('accounts/', include('django.contrib.auth.urls')),
     path('doLogin/', views.doLogin, name="doLogin"),
@@ -53,10 +53,10 @@ urlpatterns = [
     path('member_profile_update/', TeammemViews.member_profile_update, name="member_profile_update"),
     path('member_view_task/', TeammemViews.member_view_task, name="member_view_task"),
     path('profile/', TeammemViews.profile, name="profile"),
-    path('apply_leave/', TeammemViews.apply_leave, name="apply_leave"),
-    path('apply_leave_save/', TeammemViews.apply_leave_save, name="apply_leave_save"),
-    path('feedback/', TeammemViews.feedback, name="feedback"),
-    path('feedback_save/', TeammemViews.feedback_save, name="feedback_save"),
+    path('apply_leave1/', TeammemViews.apply_leave1, name="apply_leave1"),
+    path('apply_leave_save1/', TeammemViews.apply_leave_save1, name="apply_leave_save1"),
+    path('feedback1/', TeammemViews.feedback1, name="feedback1"),
+    path('feedback_save1/', TeammemViews.feedback_save1, name="feedback_save1"),
     path('task/<int:task_id>/update-status/',TeammemViews.update_task_status, name='update_task_status'),
     #path('update-task-status/<int:task_id>/', TeammemViews.update_task_status, name='update_task_status'),
     path('member_task_list/', TeammemViews.member_task_list, name='member_task_list'),

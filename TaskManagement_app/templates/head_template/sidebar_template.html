@@ -47,6 +47,9 @@
       border-radius: 0 36px 36px 0;
       cursor: pointer;
     }
+    .nav-link1.active {
+      background-color: yellow;
+    }
   </style>
   
   
@@ -91,18 +94,17 @@
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Home
-                  {% comment %} <span class="right badge badge-danger">New</span> {% endcomment %}
+                  
                 </p>
               </a>
             </li>
             <li class="nav-item">
               {% url 'projects' as projects %}
-              {% comment %}{% url 'edit_project' project_id=id as edit_project %} {% url 'edit_task' task_id=id as edit_task %}
-              {% endcomment %}
+              
               <a href="{{ projects }}" class="nav-link {% if request.path == projects %} active {% endif %}">
                 <i class="nav-icon fas fa-chalkboard"></i>
                 <p>
-                   Project Create
+                   Project List
                 </p>
               </a>
             </li>
@@ -112,7 +114,7 @@
               <a href="{{ tasks }}" class="nav-link {% if request.path == tasks %} active {% endif %} {% if request.path == edit_task %} active {% endif %}">
                 <i class="nav-icon fas fa-chalkboard"></i>
                 <p>
-                   Task
+                   Task List
                 </p>
               </a>
             </li>
@@ -139,64 +141,6 @@
               </a>
             </li>
             
-
-            
-            
-           
-            <!--li class="nav-item">
-              {% url 'staff_take_attendance' as staff_take_attendance %}
-              <a href="{{ staff_take_attendance }}" class="nav-link {% if request.path == staff_take_attendance %} active {% endif %}">
-                <i class="nav-icon fas fa-calendar-plus"></i>
-                <p>
-                  Take Attendance
-                  {% comment %} <span class="right badge badge-danger">New</span> {% endcomment %}
-                </p>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              {% url 'staff_update_attendance' as staff_update_attendance %}
-              <a href="{{ staff_update_attendance }}" class="nav-link {% if request.path == staff_update_attendance %} active {% endif %}">
-                <i class="nav-icon fas fa-calendar-alt"></i>
-                <p>
-                  View Update Attendance
-                  {% comment %} <span class="right badge badge-danger">New</span> {% endcomment %}
-                </p>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              {% url 'staff_add_result' as staff_add_result %}
-              <a href="{{ staff_add_result }}" class="nav-link {% if request.path == staff_add_result %} active {% endif %}">
-                <i class="nav-icon fas fa-tasks"></i>
-                <p>
-                  Add Result
-                  {% comment %} <span class="right badge badge-danger">New</span> {% endcomment %}
-                </p>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              {% url 'staff_apply_leave' as staff_apply_leave %}
-              <a href="{{ staff_apply_leave }}" class="nav-link {% if request.path == staff_apply_leave %} active {% endif %}">
-                <i class="nav-icon fas fa-envelope-open-text"></i>
-                <p>
-                  Apply Leave
-                  {% comment %} <span class="right badge badge-danger">New</span> {% endcomment %}
-                </p>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              {% url 'staff_feedback' as staff_feedback %}
-              <a href="{{ staff_feedback }}" class="nav-link {% if request.path == staff_feedback %} active {% endif %}">
-                <i class="nav-icon fas fa-comments"></i>
-                <p>
-                  Feedback
-                  {% comment %} <span class="right badge badge-danger">New</span> {% endcomment %}
-                </p>
-              </a>
-            </li-->
 
           </ul>
         </nav>

@@ -7,11 +7,19 @@
 {% block main_content %}
 
 {% load static %}
+<style>
+    .button {
+        background-color: #23395d; 
+        color: #ffffff; 
+      } .button:hover {
+                color: #ffffff; 
+      }
+</style>
 
 <section class="content">
         <div class="container-fluid">
 
-            <a class="btn btn-primary" href="{% url 'add_head' %}" role="button">+ Add Head</a> <br/>&nbsp;
+            <a class="btn button" href="{% url 'add_head' %}" role="button">+ Add Head</a> <br/>&nbsp;
 
             {% if messages %}
                                 <div class="form-group">
@@ -62,11 +70,15 @@
                             <thead>
                                 <tr>
                                 <th>ID</th>
-                                <th>First Name</th>
+                                <th>Profile</th>
+                                <th>Employee First Name</th>
                                 <th>Last Name</th>
                                 <th>Username</th>
                                 <th>Email</th>
-                                
+                                <th>Phone</th>
+                                <th>DOB</th>
+                                <th>Address</th>
+                                <th>gender</th>
                                 <th>Last Login</th>
                                 <th>Date Joined</th>
                                 <th>Action</th>
@@ -76,15 +88,29 @@
                                 {% for head in heads %}
                                 <tr>
                                 <td>{{ head.admin.id }}</td>
+                                <td>
+                                    {% if head.profile_pic %}
+                                        <img src="{{ head.profile_pic.url }}" style="width: 100px;" />
+                                    {% else %}
+                                        No profile picture available
+                                    {% endif %}
+                                </td>
+                                
                                 <td>{{ head.admin.first_name }}</td>
                                 <td>{{ head.admin.last_name }}</td>
                                 <td>{{ head.admin.username }}</td>
                                 <td>{{ head.admin.email }}</td>
+                                <td>{{ head.phone }}</td>
+                                <td>{{ head.dob }}</td>
+                                <td>{{ head.address }}</td>
+                                <td>{{ head.gender }}</td>
                                 <td>{{ head.admin.last_login }}</td>
                                 <td>{{ head.admin.date_joined }}</td>
                                 <td>
-                                    <a href="{% url 'edit_head' head.admin.id %}" class="btn btn-success">Edit</a> 
-                                    <a href="{% url 'delete_head' head.admin.id %}" class="btn btn-danger">Delete</a>
+                                    <!--a href="{% url 'edit_head' head.admin.id %}" class="btn"><i class="fas fa-pencil-alt"></i> Edit</a> 
+                                    <a href="{% url 'delete_head' head.admin.id %}" class="btn"><i class="fas fa-trash"></i>Delete</a-->
+                                    <a href="{% url 'edit_head' head.admin.id %}" class="btn button"><i class="fas fa-pencil-alt"></i></a> 
+                                    <a href="{% url 'delete_head' head.admin.id %}" class="btn button"><i class="fas fa-trash"></i></a>
                                 </td>
                                 </tr>
                                 {% endfor %}

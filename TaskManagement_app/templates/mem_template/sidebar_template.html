@@ -102,7 +102,7 @@
                 </p>
               </a>
             </li>
-            <li class="nav-item">
+            <!--li class="nav-item">
               {% url 'member_task_list' as member_task_list %}
               <a href="{{ member_task_list }}" class="nav-link {% if request.path == member_task_list %} active {% endif %}">
                 <i class="nav-icon fas fa-tasks"></i>
@@ -111,7 +111,7 @@
                   
                 </p>
               </a>
-            </li>
+            </li-->
             <li class="nav-item">
               {% url 'member_projects' as member_projects %}
               <a href="{{ member_projects }}" class="nav-link {% if request.path == member_projects %} active {% endif %}">
@@ -123,8 +123,8 @@
               </a>
             </li>
             <li class="nav-item">
-              {% url 'apply_leave' as apply_leave %}
-              <a href="{{ apply_leave }}" class="nav-link {% if request.path == apply_leave %} active {% endif %}">
+              {% url 'apply_leave1' as apply_leave1 %}
+              <a href="{{ apply_leave1 }}" class="nav-link {% if request.path == apply_leave %} active {% endif %}">
                 <i class="nav-icon fas fa-envelope-open-text"></i>
                 <p>
                   Apply Leave
@@ -134,8 +134,8 @@
             </li>
 
             <li class="nav-item">
-              {% url 'feedback' as feedback %}
-              <a href="{{ feedback }}" class="nav-link {% if request.path == feedback %} active {% endif %}">
+              {% url 'feedback1' as feedback1 %}
+              <a href="{{ feedback1 }}" class="nav-link {% if request.path == feedback %} active {% endif %}">
                 <i class="nav-icon fas fa-comments"></i>
                 <p>
                   Feedback

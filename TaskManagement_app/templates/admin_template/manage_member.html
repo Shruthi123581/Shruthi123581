@@ -7,11 +7,19 @@
 {% block main_content %}
 
 {% load static %}
+<style>
+    .button {
+        background-color: #23395d; 
+        color: #ffffff; 
+      }.button:hover {
+        color: #ffffff; 
+}
+</style>
 
 <section class="content">
         <div class="container-fluid">
 
-            <a class="btn btn-primary" href="{% url 'add_member' %}" role="button">+ Add Member</a> <br/>&nbsp;
+            <a class="btn button" href="{% url 'add_member' %}" role="button">+ Add Member</a> <br/>&nbsp;
             
             {% if messages %}
                                 <div class="form-group">
@@ -65,19 +73,18 @@
                                 <th>Last Name</th>
                                 <th>Username</th>
                                 <th>Email</th>
-                                
-                                <!--th>Gender</th>
-                                <th>Profile Pic</th-->
-                                <!--th>Start Year</th>
-                                <th>End Year</th>
-                                <th>Course</th-->
+                                <th>Gender</th>
+                                <th>Profile Pic</th>
+                                <th>Phone</th>
+                                <th>Address</th>
+                                <th>Date of Birth</th>
                                 <th>Last Login</th>
                                 <th>Date Joined</th>
                                 <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for member in members %}
+                                {% for member in teammem %}
                                 <tr>
                                 <td>{{ member.admin.id }}</td>
                                 <td>{{ member.admin.first_name }}</td>
@@ -85,16 +92,16 @@
                                 <td>{{ member.admin.username }}</td>
                                 <td>{{ member.admin.email }}</td>
                                 
-                                <!--td>{{ member.gender }}</td>
-                                <td> <img src="{{ student.profile_pic }}" style="width: 100px;" /> </td>
-                                <td>{{ student.session_year_id.session_start_year }}</td>
-                                <td>{{ student.session_year_id.session_end_year }}</td>
-                                <td>{{ student.course_id.course_name }}</td-->
+                                <td>{{ member.gender }}</td>
+                                <td> <img src="{{ member.profile_pic }}" style="width: 100px;" /> </td>
+                                <td>{{ member.phone }}</td>
+                                <td>{{ member.address }}</td>
+                                <td>{{ member.dob }}</td>
                                 <td>{{ member.admin.last_login }}</td>
                                 <td>{{ member.admin.date_joined }}</td>
                                 <td>
-                                    <a href="{% url 'edit_member' member.admin.id %}" class="btn btn-success">Edit</a> 
-                                    <a href="{% url 'delete_member' member.admin.id %}" class="btn btn-danger">Delete</a>
+                                    <a href="{% url 'edit_member' member.admin.id %}" class="btn button"><i class="fas fa-pencil-alt"></i></a> 
+                                    <a href="{% url 'delete_member' member.admin.id %}" class="btn button"><i class="fas fa-trash"></i></a>
                                 </td>
                                 </tr>
                                 {% endfor %}

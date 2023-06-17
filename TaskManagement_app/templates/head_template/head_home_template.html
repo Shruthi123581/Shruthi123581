@@ -11,17 +11,21 @@
 <section class="content">
         <div class="container-fluid">
             <div class="row">
-
-                <div class="w3-card-4" style="width:70%">
+              
+                <div class="w3-card-4" style="width:40%; margin:20px;">
                   <header class="w3-container w3-light-grey">
                     <h3>{{ user.first_name }} {{ user.last_name }}</h3>
                   </header>
+
                   <br>
+                  
+
                   <div class="w3-container">
                     <div class="image">
                     <img src="{% static 'dist/img/user2-160x160.jpg' %}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
                     </div>
                     <p>{{ user.username }}</p><br>
+                    <p>Total Logged-in Time: {{ total_time|floatformat:0 }} minutes</p>
                   </div>
                   <br>
                  
@@ -30,76 +34,6 @@
               </div>
               <br>
 
-            {% comment %} Boxes Section Starts {% endcomment %}
-            
-            {% comment %} Boxes Section Ends 
-
-            <div class="row">
-                <div class="col-lg-6">
-                    <!-- PIE CHART -->
-                    <div class="card card-danger">
-                    <div class="card-header">
-                        <h3 class="card-title">Leave Status Chart</h3>
-
-                        <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                    </div>
-                    <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
-                </div>
-
-                <div class="col-lg-6">
-                    <!-- BAR CHART -->
-                    <div class="card card-success">
-                    <div class="card-header">
-                        <h3 class="card-title">Subjects Attend Chart</h3>
-
-                        <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart">
-                        <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                        </div>
-                    </div>
-                    <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <!-- BAR CHART -->
-                    <div class="card card-info">
-                    <div class="card-header">
-                        <h3 class="card-title">Student Attendance Data</h3>
-
-                        <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart">
-                        <canvas id="barChart2" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                        </div>
-                    </div>
-                    <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
-                </div>{% endcomment %}
             </div>
 
         </div><!-- /.container-fluid -->
@@ -108,10 +42,54 @@
   {% endblock main_content %}
 
   {% block custom_js %}
-    <script>
-       $(document).ready(function(){
-           //Code for Pie Chart
-            
-       })
-    </script>
+  <script>
+    $(document).ready(function() {
+      // Get the CSRF token from the cookie
+      function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
+  
+      $('#toggleButton').change(function() {
+        var isChecked = $(this).is(':checked');
+        var userId = '{{ request.user.id }}'; // Assuming you have access to the logged-in user's ID
+  
+        // Get the CSRF token
+        var csrftoken = getCookie('csrftoken');
+  
+        // Send AJAX request to update user login status
+        $.ajax({
+          url: '/toggle-login/',
+          type: 'POST',
+          data: {
+            'user_id': userId,
+            'is_checked': isChecked
+          },
+          headers: {
+            'X-CSRFToken': csrftoken  // Include the CSRF token in the request headers
+          },
+          success: function(response) {
+            console.log(response);
+  
+            // Reload the page after successful login/logout
+            location.reload();
+          },
+          error: function(xhr, errmsg, err) {
+            console.log(errmsg);
+          }
+        });
+      });
+    });
+  </script>
+    
   {% endblock custom_js %}

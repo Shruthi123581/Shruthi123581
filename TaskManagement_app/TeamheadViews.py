@@ -16,16 +16,22 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.db.models import Count
 from django.contrib.auth.decorators import login_required
+
+
 ####
 
 
 from TaskManagement_app.models import CustomUser, TeamHead,TeamMem,Project,Task,LeaveReport,FeedBack
 
+#context
+
+    
 @login_required
 def head_home(request):
+    user = CustomUser.objects.get(id=request.user.id)
     
-	     
-    return render(request, "head_template/head_home_template.html")#context
+    return render(request, "head_template/head_home_template.html", {'user': user})
+
 
 @login_required
 def head_profile(request):

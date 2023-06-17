@@ -3,6 +3,8 @@
 BASICS
 ***********************************/
 
+
+
 /*overflow: scroll; */
 
 .project-list,
@@ -13,7 +15,7 @@ BASICS
 	background-color: #fff;
 	border-radius: 11px;
 	grid-row: 1;
-	margin: 0.5rem;
+	margin:50px;
 	padding: 0.5rem;
 	text-align: left;
 	
@@ -25,23 +27,11 @@ BASICS
 }
 
 
-/*.info-widget {
 
-	grid-row: 3/-1;
-	background-color: #fff;
-	border-radius: 11px;
-	margin: 2.4rem;
-	padding: 2.4rem;
-	text-align: center;
-	height: 50vh;
-
-	overflow: scroll;
-}
-*/
 
 .ph-arrow-circle-left-fill {
 
-	color: #22223B;
+	color: #23395d;
 	font-size: 3rem;
 	padding-bottom: 1rem;
 }
@@ -109,15 +99,15 @@ PROJECTS
     font-size: 1rem;
 	display: flex;
 	justify-content: space-between;
-	padding-bottom: 1rem;
+	padding-bottom: 0.9rem;
 }
 
 .due-date {
 
-	font-size: 1rem;
+	font-size: 0.9rem;
 	font-weight: 600;		
 	background-color: #a0c4ff;
-	padding: 1rem;	
+	padding: 0.8rem;	
 	border-radius: 30px;
 	text-decoration: none;
 	box-shadow: 0 0.5rem 2.4rem rgba(0, 0, 0, 0.15);
@@ -126,11 +116,11 @@ PROJECTS
 
 .due-date-passed {
 
-	font-size: 1rem;
+	font-size:0.9rem;
 	font-weight: 600;		
 	background-color: #FF595E;
-	padding: 1rem;
-	border-radius: 30px;
+	padding: 0.8rem;
+	border-radius: 28px;
 	text-decoration: none;
 	box-shadow: 0 0.5rem 2.4rem rgba(0, 0, 0, 0.15);
 
@@ -155,7 +145,7 @@ PROJECTS
 
 .create-btn {
 
-	background-color: #22223B;
+	background-color: #23395d;
 	display: block;
 	text-align: center;
 	color: #fff;
@@ -303,14 +293,14 @@ PROJECTS
 .project-subtitle {
 
 	font-size: 1rem;
-	padding-bottom: 1rem;
+	padding-bottom: 0.9rem;
 }
 
-.project-date-text {
+/*.project-date-text {
 
 	font-size: 1rem;
 	padding-bottom: 1rem;
-}
+}*/
 
 .project-links {
 	
@@ -323,8 +313,8 @@ PROJECTS
 .project-card-link:visited {
 	
 	font-size: 1rem;	
-	background-color: #22223B;
-	padding: 1rem;
+	background-color: #23395d;
+	padding: 0.9rem;
 	
 	border-radius: 50px;
 	text-decoration: none;
@@ -342,21 +332,21 @@ PROJECTS
 
 .project-card {
    
-	padding: 1rem;
+	padding: 0.9rem;
 	background-color: #fff;
 	border-radius: 11px;
-	margin-top: 1rem;
-	margin-bottom: 1rem;
+	margin-top: 0.8rem;
+	margin-bottom: 0.8rem;
 
 }
 
 .project-card--complete {
 
-	padding: 1rem;
+	padding: 0.9rem;
 	background-color: #B2E4DB;
 	border-radius: 11px;
-	margin-top: 2rem;
-	margin-bottom: 2rem;
+	margin-top: 0.8rem;
+	margin-bottom: 0.8rem;
 
 }
 
@@ -373,7 +363,7 @@ PROJECTS
 .project-description-on {
 
 	font-size: 1rem;
-	padding-bottom: 1rem;
+	padding-bottom: 0.5rem;
 
 }
 
@@ -396,7 +386,7 @@ PROJECTS
 
 .ph-pencil {
 
-	font-size: 1rem;
+	font-size: 2rem;
 	color: #22223B;
 	padding-bottom: 1rem;
 
@@ -409,7 +399,7 @@ PROJECTS
 
 .ph-trash {
 
-	font-size: 1rem;
+	font-size: 2rem;
 	color: #22223B;
 	padding-bottom: 1rem;
 
@@ -422,12 +412,12 @@ PROJECTS
 
 .create-btn--single {
 
-	background-color: #22223B;
+	background-color: #23395d;
 	display: block;
 	text-align: center;
 	color: #fff;
 	cursor: pointer;
-	padding: 1rem;
+	padding: 0.9rem;
 	font-size: 1rem;
 	font-family: inherit;
 	border: none;
@@ -435,7 +425,7 @@ PROJECTS
 	font-weight: 500;
 	text-decoration: none;
 	box-shadow: 0 2rem 2.4rem rgba(0, 0, 0, 0.15);
-	margin-bottom: 1rem;
+	margin-bottom: 0.8rem;
 }
 
 .create-btn--single:hover {
@@ -451,7 +441,7 @@ PROJECTS
 
 .project-task-section {
 
-	padding-top: 1rem;
+	padding-top: 0.5rem;
 }
 
 /***********************************
@@ -466,12 +456,11 @@ TASKS
 
 
 .project-card--task {
-
 	padding: 1.2rem 2rem 1.2rem 2rem;
 	background-color: #fff;
 	border-radius: 11px;
-	margin-top: 2rem;
-	margin-bottom: 2rem;
+	
+	margin-bottom: 1rem;
 	margin-left: 2rem;
 	margin-right: 2rem;
 	display: flex;
@@ -485,10 +474,9 @@ TASKS
 
 .project-card--task--complete {
 
-	padding: 1.2rem 2rem 1.2rem 2rem;
 	background-color: #B2E4DB;
 	border-radius: 11px;
-	margin-top: 2rem;
+	
 	margin-bottom: 2rem;
 	margin-left: 2rem;
 	margin-right: 2rem;
@@ -565,7 +553,7 @@ FORMS
 
 .form input[type=submit] {
 
-	background-color: #22223B;
+	background-color: #23395d;
 	color: #fff;
 	cursor: pointer;
 }
@@ -580,7 +568,7 @@ FORMS
 
 .action-btn {
 
-	background-color: #22223B;
+	background-color: #23395d;
 	color: #fff;
 	cursor: pointer;
 	padding: 1rem;

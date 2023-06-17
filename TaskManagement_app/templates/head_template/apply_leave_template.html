@@ -7,14 +7,21 @@
 {% block main_content %}
 
 {% load static %}
-
+<style>
+    .button {
+        background-color: #23395d; 
+        color: #ffffff; 
+      }.button:hover {
+        color: #ffffff; 
+}
+    </style>
 <section class="content">
         <div class="container-fluid">
 
             <div class="row">
                 <div class="col-md-12">
                     <!-- general form elements -->
-                    <div class="card card-primary">
+                    <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Apply For Leave</h3>
                     </div>
@@ -64,7 +71,7 @@
                         <!-- /.card-body -->
 
                         <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Apply for Leave</button>
+                        <button type="submit" class="btn button">Apply for Leave</button>
                         </div>
 
                     </form>
@@ -79,7 +86,7 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card card-success">
+                    <div class="card ">
                         <div class="card-header">
                             <h3 class="card-title">Leave Apply History</h3>
                         </div>

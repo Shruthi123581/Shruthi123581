@@ -1,0 +1,25 @@
+{% extends 'mem_template/base_template.html' %}
+
+{% block page_title %}
+    Project Tasks
+{% endblock page_title %}
+
+{% block main_content %}
+<section class="content">
+  <div class="container-fluid">
+    
+    <h3>Project: {{ project.project_title }}</h3>
+    {% for member in members %}
+        <h3>{{ member.first_name }}</h3>
+        <ul>
+            {% for task in member.task_set.all %}
+                {% if task.task_belongs == project %}
+                    <li>{{ task.task_title }} - {{ task.assigned_member }}</li>
+                    
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endfor %}
+  </div>
+</section>
+{% endblock main_content %}

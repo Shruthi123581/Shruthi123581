@@ -5,37 +5,16 @@ from django.dispatch import receiver
 from datetime import date
 # Create your models here.
 
-
-
-
-'''class Role(models.Model):
-  
-  The Role entries are managed by the system,
-  automatically created via a Django data migration.
-  
-  ADMIN = 1
-  TeamHead = 2
-  TeamMem = 3
-  
-  ROLE_CHOICES = (
-      (ADMIN, 'admin'),
-      (TeamHead, 'teamhead'),
-      (TeamMem, 'teammem'),
-    
-  )
-
-  id = models.PositiveSmallIntegerField(choices=ROLE_CHOICES, primary_key=True)
-
-  def __str__(self):
-      return self.get_id_display()
-'''
-
-
-
 class CustomUser(AbstractUser):
-    #roles = models.ManyToManyField(Role)
     user_type_data = ((1, "Admin"), (2, "TeamHead"), (3, "TeamMem"))
     user_type = models.CharField(default=1, choices=user_type_data, max_length=10)
+   
+
+GENDER_CHOICES = (
+    ('M', 'Male'),
+    ('F', 'Female'),
+    
+)
 
 
 class AdminHR(models.Model):
@@ -46,41 +25,32 @@ class AdminHR(models.Model):
     objects = models.Manager()
 
 
-
-
-
 class TeamHead(models.Model):
     id = models.AutoField(primary_key=True)
     admin = models.OneToOneField(CustomUser, on_delete = models.CASCADE)
-    #address = models.TextField()
+    address = models.CharField(max_length=100,null=True)
+    phone = models.CharField(max_length=20,null=True)
+    profile_pic = models.ImageField(upload_to="profile_pics",null=True)
+    dob = models.DateField(null=True)
+    gender = models.CharField(choices=GENDER_CHOICES, max_length=1, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = models.Manager()
-
-
-
-
-
-
-
-
 
 
 class TeamMem(models.Model):
     id = models.AutoField(primary_key=True)
     admin = models.OneToOneField(CustomUser, on_delete = models.CASCADE)
-    #gender = models.CharField(max_length=50)
-    #profile_pic = models.FileField()
-    #address = models.TextField()
-    #course_id = models.ForeignKey(Courses, on_delete=models.DO_NOTHING, default=1)
-    #session_year_id = models.ForeignKey(SessionYearModel, on_delete=models.CASCADE)
+    address = models.CharField(max_length=100,null=True)
+    phone = models.CharField(max_length=20,null=True)
+    profile_pic = models.FileField(upload_to='profile_pics/',null=True)
+    dob = models.DateField(null=True)
+    gender = models.CharField(choices=GENDER_CHOICES, max_length=1, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = models.Manager()
-
     def __str__(self):
          return str(self.admin.first_name)
-
 
 
 
@@ -102,6 +72,7 @@ class Project(models.Model):
         project_create = models.DateTimeField(auto_now_add=True)
         project_due_date = models.DateField(auto_now_add=False, null=True, blank=False)
         members = models.ManyToManyField(TeamMem,related_name='projects')
+        
 
         def is_due_date(self):
              return date.today() < self.project_due_date
@@ -111,10 +82,7 @@ class Project(models.Model):
         
         class Meta:
             ordering = ['project_complete']
-    
-
-	
-    
+     
 	
                 
                 
@@ -124,7 +92,6 @@ class Task(models.Model):
 		('1', 'New'),
 		('2', 'In Progress'),
 		('3', 'Completed'),
-		
 		]
     def get_task_status_display(self):
         return dict(self.CHOICES).get(self.task_status)
@@ -188,16 +155,6 @@ class FeedBack(models.Model):
 
 
 
-
-
-
-
-
-
-
-
-
-
     #Creating Django Signals
 
 # It's like trigger in database. It will run only when Data is Added in CustomUser model
@@ -221,7 +178,7 @@ def save_user_profile(sender, instance, **kwargs):
     if instance.user_type == 1:
         instance.adminhr.save()
     if instance.user_type == 2:
-        instance.heads.save()
+        instance.teamhead.save()
     if instance.user_type == 3:
-        instance.members.save()
+        instance.teammem.save()
     

@@ -7,14 +7,21 @@
 {% block main_content %}
 
 {% load static %}
-
+<style>
+    .button {
+        background-color: #23395d; 
+        color: #ffffff; 
+      }.button:hover {
+        color: #ffffff; 
+}
+    </style>
 <section class="content">
         <div class="container-fluid">
 
             <div class="row">
                 <div class="col-md-12">
                     <!-- general form elements -->
-                    <div class="card card-primary">
+                    <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Update Profile</h3>
                     </div>
@@ -80,7 +87,7 @@
                         <!-- /.card-body -->
 
                         <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                        <button type="submit" class="btn button">Update Profile</button>
                         </div>
                     </form>
                     </div>

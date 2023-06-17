@@ -1,65 +1,55 @@
 {% extends 'mem_template/base_template.html' %}
 
 {% block page_title %}
-    Update Profile
+      Projects
 {% endblock page_title %}
 
 {% block main_content %}
 
 {% load static %}
-
-
-{% load static %}
-
+<style>
+.button {
+  background-color: #23395d; 
+  color: #ffffff; 
+}.button:hover {
+  color: #ffffff; 
+}
+</style>
 <section class="content">
   <div class="container-fluid">
-    <h2>Projects</h2>
+    
     <ul>
       <div class="row">
         {% for project in member_projects %}
         <div class="col-md-4">
-          <div class="card" onclick="displayTasks('{{ project.id }}')">
-            <div class="card-body">
-              <h5 class="card-title">{{ project.project_title }}</h5>
-              <p class="card-text">Owner: {{ project.owner }}</p>
-              <p class="card-text">Members:</p>
-              <ul class="list-unstyled">
-                {% for member in project.members.all %}
-                <li>{{ member }}</li>
-                {% endfor %}
-              </ul>
-              <!-- Additional project details -->
+          <form action="/get_tasks/" method="GET">
+            {% csrf_token %}
+            <input type="hidden" name="project_id" value="{{ project.id }}">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">{{ project.project_title }}</h5>
+                <p class="card-text">Owner: {{ project.owner }}</p>
+                <p class="card-text">Members:</p>
+                <ul class="list-unstyled">
+                  {% for member in project.members.all %}
+                  <li>{{ member }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <div class="card-footer">
+                <button type="submit" class="btn button">View Tasks</button>
+              </div>
             </div>
-          </div>
+          </form>
         </div>
         {% empty %}
         <p>No projects available.</p>
         {% endfor %}
       </div>
     </ul>
+    <div id="taskListContainer"></div>
   </div><!-- /.container-fluid -->
 </section>
 
-<script src="{% static 'jquery/jquery.js' %}"></script>
-<script>
-  function displayTasks(projectId) {
-    // Make an AJAX request to fetch the tasks for the selected project
-    $.ajax({
-      url: '/get_tasks/',
-      type: 'GET',
-      data: {
-        project_id: projectId
-      },
-      success: function(response) {
-        // Process the response and display the tasks
-        // You can update the DOM to show the tasks in a modal, another section of the page, etc.
-        console.log(response);
-      },
-      error: function(error) {
-        console.log(error);
-      }
-    });
-  }
-</script>
 
 {% endblock main_content %}
